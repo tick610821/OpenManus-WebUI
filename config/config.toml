@@ -1,0 +1,28 @@
+## Global LLM configuration
+#[llm]
+#model = "deepseek-chat"
+#base_url = "https://api.deepseek.com/v1"
+#api_key = "sk-xxxxxxxxxxxxxxxxxxx"
+#max_tokens = 4096
+#temperature = 0.6
+#
+## Optional configuration for specific LLM models
+#[llm.vision]
+#model = "deepseek-chat"
+#base_url = "https://api.deepseek.com/v1"
+#api_key = "sk-xxxxxxxxxxxxxxxxxxx"
+
+
+# Global LLM configuration
+[llm]
+model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+base_url = "https://api.siliconflow.cn/v1/"
+api_key = "sk-xxxxxxxxxxxxxxxxxxxxxxx"
+max_tokens = 4096
+temperature = 0.6
+
+# Optional configuration for specific LLM models
+[llm.vision]
+model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+base_url = "https://api.siliconflow.cn/v1/"
+api_key = "sk-xxxxxxxxxxxxxxxxxxxxxxxxx"

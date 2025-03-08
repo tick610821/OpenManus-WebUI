@@ -4,20 +4,14 @@ import mimetypes
 import os
 import time
 from pathlib import Path
-import asyncio
-from app.agent.manus import Manus
-from app.logger import logger
-import threading
-import shutil
 
 app = Flask(__name__)
 app.config['WORKSPACE'] = 'workspace'
 
 # 初始化工作目录
 os.makedirs(app.config['WORKSPACE'], exist_ok=True)
-LOG_FILE = 'logs/root_stream.log'
-FILE_CHECK_INTERVAL = 2  # 文件检查间隔（秒）
-PROCESS_TIMEOUT = 600      # 最长处理时间（秒）
+LOG_FILE = '20250308.log'
+FILE_CHECK_INTERVAL = 0.5  # 文件检查间隔（秒）
 
 def get_files_pathlib(root_dir):
     """使用pathlib递归获取文件路径"""
@@ -39,6 +33,7 @@ def get_files():
         for entry in get_files_pathlib(path):
             #full_path = os.path.join(path, entry)
             full_path = entry
+            print(111,full_path)
             if os.path.isdir(full_path):
                 file_tree.append({
                     "name": entry,
@@ -143,77 +138,38 @@ def save_file():
 #     except Exception as e:
 #         return jsonify({"error": str(e)}), 500
 
-
-async def main(prompt):
-    agent = Manus()
-    await agent.run(prompt)
-
-
-# 线程包装器
-def run_async_task(message):
-    """在新线程中运行异步任务"""
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    loop.run_until_complete(main(message))
-    loop.close()
-
-
 @app.route('/api/chat-stream', methods=['POST'])
 def chat_stream():
-    """流式日志接口"""
-    # 清空日志文件
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
+    """流式返回日志内容"""
 
-    # 获取请求数据
-    prompt = request.get_json()
-    print("收到请求:", prompt)
-
-    # 启动异步任务线程
-    task_thread = threading.Thread(
-        target=run_async_task,
-        args=(prompt["message"],)
-    )
-    task_thread.start()
-
-    # 流式生成器
     def generate():
-        start_time = time.time()
+        # 记录初始文件大小
         last_size = 0
-        process_active = True
+        active = True
 
-        while process_active:
-            # 超时检查
-            if time.time() - start_time > PROCESS_TIMEOUT:
-                yield "\n[错误] 处理超时\n"
+        while active:
+            # 检查文件是否存在
+            if not os.path.exists(LOG_FILE):
+                yield "日志文件不存在\n"
                 break
 
-            shutil.copy('logs/root.log',LOG_FILE)
-            try:
-                # 读取新增内容
-                with open(LOG_FILE, "r", encoding="utf-8") as f:
-                    f.seek(last_size)
-                    new_content = f.read()
-                    last_size = f.tell()
+            # 读取新内容
+            with open(LOG_FILE, 'r', encoding='utf-8') as f:
+                f.seek(last_size)
+                new_content = f.read()
+                last_size = f.tell()
 
-                    if new_content:
-                        yield new_content
+                if new_content:
+                    yield new_content
 
-                # 检查任务状态
-                process_active = task_thread.is_alive()
+            # 检查文件是否还在变化
+            time.sleep(FILE_CHECK_INTERVAL)
+            current_size = os.path.getsize(LOG_FILE)
+            active = (current_size != last_size)
 
-                # 无新内容时暂停
-                if not new_content:
-                    time.sleep(FILE_CHECK_INTERVAL)
+        yield "\n[EOF]"
 
-            except Exception as e:
-                yield f"\n[错误] 读取日志失败: {str(e)}\n"
-                break
-
-        # 最终确认
-        yield "\n[完成] 处理结束\n"
-
-    return Response(generate(), mimetype="text/plain")
+    return Response(generate(), mimetype='text/plain')
 
 
 
