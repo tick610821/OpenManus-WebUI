@@ -1,3 +1,7 @@
+![python version](https://img.shields.io/badge/python-3.8+-orange.svg)
+![GitHub forks](https://img.shields.io/github/forks/Shybert-AI/OpenManusAI)
+![GitHub Repo stars](https://img.shields.io/github/stars/Shybert-AI/OpenManusAI)
+![GitHub](https://img.shields.io/github/license/Shybert-AI/OpenManusAI)
 [English](README_zh.md) | 简体中文
 
 # OpenManusX 🙋
