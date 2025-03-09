@@ -9,7 +9,7 @@
 
 Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前端，于是本人花了2小时开发基于Flask框架一个简单的WebUI。 🛫！
 
-##  本项目实际上是构建一个前端页面，通过调用flask框架实现OpenManus的调用。
+##  本项目实质上是通过flask框架构建一个前端页面，进行OpenManus的调用，并对OpenManus生成的文件进行预览。
 
 ## 📑 前端页面需要不断的优化，计划
 - OpenManusX
