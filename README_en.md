@@ -104,7 +104,7 @@ base_url = "https://api.siliconflow.cn/v1/"
 api_key = "sk-xxxxxxxxxxxxxxxxxx"
 ```
 
-## 快速启动
+## quick start
 
 Run OpenManusX with one command, and then open it on the webpage http://127.0.0.1:5000
 
@@ -112,7 +112,11 @@ Run OpenManusX with one command, and then open it on the webpage http://127.0.0.
 python app.py
 ```
 
-## 致谢
+## acknowledgments
 
 Special Thanks [OpenManus](https://github.com/mannaandpoem/OpenManus)
 and [browser-use](https://github.com/browser-use/browser-use) The basic support provided for this project!
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Shybert-AI/OpenManus-WebUI&type=Date)](https://star-history.com/#Shybert-AI/OpenManus-WebUI&Date)
