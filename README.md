@@ -120,3 +120,7 @@ python app.py
 
 特别感谢 [OpenManus](https://github.com/mannaandpoem/OpenManus)
 和 [browser-use](https://github.com/browser-use/browser-use) 为本项目提供的基础支持！
+
+# ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Shybert-AI/OpenManus-WebUI&type=Date)](https://star-history.com/#Shybert-AI/OpenManus-WebUI&Date)
