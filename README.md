@@ -11,10 +11,16 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 
 ##  本项目实际上是构建一个前端页面，通过调用flask框架实现OpenManus的调用。
 
-前端页面需要不断的优化！优化点：    
-1.OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的展示;    
-2.右侧的大模型对话框需要进行美化，需要进行对OpenManus运行log进行优化显示，如代码高亮等;    
-3.不断打磨前后端，完成自动化执行。  
+ 
+## 前端页面需要不断的优化
+## 📑 计划
+- OpenManusX
+    - [x] 开源初版WebUI
+    - [ ] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的展示;    
+    - [ ] 大模型对话框需要进行美化，需要进行对OpenManus运行log进行优化显示，如代码高亮等;    
+    - [ ] 不断打磨前后端，完成自动化执行
+
+
 <div align="center">
     <img src="./assets/1.jpg">
 </div>
