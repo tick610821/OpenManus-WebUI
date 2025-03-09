@@ -7,10 +7,14 @@
 # OpenManusX 🙋
 
 Manus and OpenManus are great, but OpenManus currently does not have a front-end. Therefore, I spent 2 hours developing a simple WebUI based on the Flask framework, which can be called by calling OpenManus to achieve front-end calling. 🛫！
-This is a concise implementation plan, and the front-end page needs continuous optimization! Optimization point:
-1. The preview and save areas of OpenManusX files need to support PDF ppt、word、excel、 Highlighted display of code;
-2. The large model dialog box on the right needs to be beautified and optimized for displaying OpenManus runtime logs, such as highlighting code;
-3. Continuously polish the front and back ends to achieve automated execution.
+
+##  📑 The front-end page needs continuous optimization, plan
+- OpenManusX
+-[x] Open source initial version of WebUI
+-[ ] The preview and save areas of OpenManusX files need to support PDF ppt、word、excel、 Preview of highlighted code;
+-[ ] The large model dialog box needs to be beautified for output, and the OpenManus runtime log needs to be optimized for display, such as code highlighting;
+-[ ] Continuously polish the front and back ends to achieve automated execution.
+
 <div align="center">
     <img src="./assets/1.jpg">
 </div>
