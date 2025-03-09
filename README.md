@@ -16,9 +16,9 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 ## 📑 计划
 - OpenManusX
     - [x] 开源初版WebUI
-    - [ ] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的展示;    
-    - [ ] 大模型对话框需要进行美化，需要进行对OpenManus运行log进行优化显示，如代码高亮等;    
-    - [ ] 不断打磨前后端，完成自动化执行
+    - [ ] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的预览;    
+    - [ ] 大模型对话框需要对输出进行美化，需要对OpenManus运行log优化显示，如代码高亮等;    
+    - [ ] 不断打磨前后端，完成自动化执行。
 
 
 <div align="center">
