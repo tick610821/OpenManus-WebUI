@@ -11,9 +11,8 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 
 ##  本项目实质上是通过flask框架构建一个前端页面，进行OpenManus的调用，并对OpenManus生成的文件进行预览。
 # News
-
-# - 2025-03-09 OpenManusX文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，可以通过下载到本地自行预览。自己增加可以使用OnlyOffice Document Server或者Google Docs Viewer进行ppt、word、excel的预览。
-# - 2025-03-08 开源初版WebUI
+- 2025-03-09 OpenManusX文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，通过下载到本地自行预览。可以使用OnlyOffice Document Server或者Google Docs Viewer进行ppt、word、excel的预览。
+- 2025-03-08 开源初版WebUI
 
 ## 📑 前端页面需要不断的优化，计划
 - OpenManusX
