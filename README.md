@@ -21,18 +21,7 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
     - [ ] 大模型对话框需要对输出进行美化，需要对OpenManus运行log优化显示，如代码高亮等;    
     - [ ] 不断打磨前后端，完成自动化执行。
 
-## V1
-<div align="center">
-    <img src="./assets/1.jpg">
-</div>
-<div align="center">
-    <img src="./assets/2.jpg">
-</div>
-<div align="center">
-    <img src="./assets/3.jpg">
-</div>
-
-## V2
+## WebUI_V2
 <div align="center">
     <img src="./assets/pdf.jpg">
 </div>
@@ -41,6 +30,17 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 </div>
 <div align="center">
     <img src="./assets/code.jpg">
+</div>
+
+## WebUI_V1
+<div align="center">
+    <img src="./assets/1.jpg">
+</div>
+<div align="center">
+    <img src="./assets/2.jpg">
+</div>
+<div align="center">
+    <img src="./assets/3.jpg">
 </div>
 
 
@@ -138,6 +138,7 @@ api_key = "sk-xxxxxxxxxxxxxxxxxx"
 ```bash
 python app.py
 ```
+## 欢迎大佬将有趣的想法，提Issues，会不断进行优化和实现。
 
 ## 致谢
 
