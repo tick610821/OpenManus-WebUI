@@ -1,0 +1,455 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenManusX AI开放平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    /* 左侧资源管理器 */
+    .sidebar {
+        width: 280px;
+        background: #4ecdc4;
+        border-right: 1px solid #dee2e6;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .file-tree {
+        margin-top: 15px;
+    }
+
+    .folder {
+        margin: 8px 0;
+        cursor: pointer;
+    }
+
+    .file {
+        margin: 5px 0 5px 20px;
+        color: #495057;
+        padding: 3px;
+        border-radius: 3px;
+    }
+
+    .file:hover {
+        background: #e9ecef;
+    }
+
+    /* 中间工作区 */
+    .workspace {
+        flex: 1;
+        background: white;
+        padding: 15px;
+    }
+
+    .editor-header {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .tab {
+        padding: 8px 15px;
+        background: #f1f3f4;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+    }
+
+    .tab.active {
+        background: var(--secondary-color);
+        color: block;
+    }
+
+    .code-editor {
+        width: 100%;
+        height: calc(80vh - 70px);
+        padding: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        font-family: 'Consolas', monospace;
+        font-size: 14px;
+        resize: none;
+    }
+
+    /* 右侧对话区 */
+    .chat-panel {
+        width: 600px;
+        height: calc(101.7vh - 70px);
+        background: white;
+        border-left: 1px solid #dee2e6;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-header {
+        padding: 8px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+
+
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+    }
+
+    .content {
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 12px;
+    }
+
+
+    .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 80%;
+    }
+
+    .message.ai {
+        background: var(--ai-bubble);
+        margin-right: auto;
+    }
+
+    .message.user {
+        background: var(--user-bubble);
+        margin-left: auto;
+    }
+
+    .chat-input {
+        padding: 15px;
+        border-top: 1px solid #dee2e6;
+        display: flex;
+        gap: 10px;
+    }
+
+    .chat-input input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+    }
+
+    .send-btn {
+      /* 基础样式 */
+      display: inline-block;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;  /* 控制圆角程度 */
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      /* 阴影效果 */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 悬停效果 */
+    .send-btn:hover {
+      background-color: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 点击效果 */
+    .send-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 禁用状态 */
+    .send-btn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 6px 0 10px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* 双色对角线渐变 */
+    }
+
+    </style>
+
+    <script>
+
+    // 前端修改 (app.js)
+    const FILE_ICONS = {
+        // 基础类型
+        'directory': '📁',
+        'default': '📄',
+
+        // 编程语言
+        '.py': '🐍',       // Python
+        '.js': '🚀',       // JavaScript
+        '.ts': '🟦',       // TypeScript
+        '.java': '☕',     // Java
+        '.c': '🔧',        // C
+        '.cpp': '🔩',      // C++
+        '.cs': 'Ⓜ️',      // C#
+        '.go': '🐹',       // Golang
+        '.rs': '🦀',       // Rust
+
+        // 标记语言
+        '.html': '🌐',     // HTML
+        '.htm': '🌐',
+        '.css': '🎨',      // CSS
+        '.scss': '🎀',     // SCSS
+        '.less': '🟣',     // LESS
+        '.md': '📝',       // Markdown
+
+        // 数据格式
+        '.json': '📦',     // JSON
+        '.xml': '📜',      // XML
+        '.csv': '📊',      // CSV
+        '.xlsx': '📈',     // Excel
+        '.xls': '📉',
+
+        // 文档
+        '.doc': '📃',      // Word
+        '.docx': '📑',
+        '.ppt': '📽️',     // PowerPoint
+        '.pptx': '🎞️',
+        '.pdf': '📚',      // PDF
+
+        // 媒体文件
+        '.png': '🖼️',      // 图片
+        '.jpg': '🌅',
+        '.jpeg': '🌄',
+        '.gif': '🎆',
+        '.mp4': '🎥',      // 视频
+        '.mp3': '🎵',      // 音频
+
+        // 系统文件
+        '.exe': '⚙️',      // 可执行文件
+        '.bat': '🖥️',      // 批处理文件
+        '.sh': '📟',       // Shell脚本
+
+        // 压缩包
+        '.zip': '🗜️',
+        '.rar': '🎒',
+        '.tar': '📦',
+        '.gz': '⛑️',
+
+        // 配置文件
+        '.yml': '⚙️',
+        '.yaml': '⚙️',
+        '.toml': '⚙️',
+        '.ini': '⚙️',
+
+        // 其他
+        '.sql': '🗃️',      // 数据库
+        '.log': '📰',      // 日志文件
+        '.lock': '🔒'      // 锁定文件
+    };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 文件系统操作
+            let currentFile = 'new_file.py';
+
+            // 初始化文件树
+            async function loadFileTree() {
+                try {
+                    const response = await fetch('/api/files');
+                    const data = await response.json();
+                    renderFileTree(data, document.querySelector('.file-tree'));
+                } catch (error) {
+                    console.error('加载文件树失败:', error);
+                }
+            }
+
+            // 渲染文件树
+            function renderFileTree(tree, container) {
+                container.innerHTML = tree.map(item => `
+                    <div class="${item.type === 'directory' ? 'folder' : 'file'}"
+                         data-path="${item.path || ''}">
+                        ${item.type === 'directory' ? '📁' : FILE_ICONS[item.ext]  || FILE_ICONS.default } ${item.name}
+                        ${item.type === 'directory' ?
+                            `<div class="children">${renderFileTree(item.children, document.createElement('div'))}</div>` : ''}
+                    </div>
+                `).join('');
+
+                // 绑定点击事件
+                container.querySelectorAll('.file').forEach(item => {
+                    item.addEventListener('click', async () => {
+                        const path = item.dataset.path;
+                        const response = await fetch('/api/file', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ path: path })
+                        });
+                        const data = await response.json();
+                        document.querySelector('.code-editor').value = data.content;
+                        currentFile = path;
+                        document.querySelector('.tab.active').textContent = path;
+                    });
+                });
+            }
+
+            // 保存文件
+            window.saveFile = async () => {
+                const content = document.querySelector('.code-editor').value;
+                try {
+                    await fetch('/api/save', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            path: currentFile,
+                            content: content
+                        })
+                    });
+                    await loadFileTree();
+                    alert('保存成功！');
+                } catch (error) {
+                    console.error('保存失败:', error);
+                }
+            }
+
+            // 聊天功能
+            const chatInput = document.querySelector('.chat-input input');
+            const chatMessages = document.querySelector('.chat-messages');
+
+            // 修改后的消息发送函数
+            window.sendMessage = async () => {
+                const input = document.getElementById('message-input');
+                const message = input.value.trim();
+                if (!message) return;
+
+                // 添加用户消息
+                const chatBox = document.querySelector('.chat-messages');
+                chatBox.innerHTML += `
+                    <div class="message user">
+                        <img src="/static/user-avatar.png" class="avatar">
+                        <div class="content">${message}</div>
+                    </div>
+                `;
+
+                // 添加机器人消息容器
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.className = 'message ai';
+                botMessageDiv.innerHTML = `
+                    <img src="/static/robot-avatar.png" class="avatar">
+                    <div class="content" id="bot-response"></div>
+                `;
+                chatBox.appendChild(botMessageDiv);
+
+                // 滚动到底部
+                chatBox.scrollTop = chatBox.scrollTop + 1000;
+
+                try {
+                    const response = await fetch('/api/chat-stream', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ message: message })
+                    });
+
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let responseContent = '';
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+
+                        const chunk = decoder.decode(value);
+                        responseContent += chunk;
+
+                        // 更新显示内容
+                        document.getElementById('bot-response').innerHTML =
+                            responseContent.replace(/\n/g, '<br>');
+
+                        // 自动滚动
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }
+
+                    input.value = '';
+                } catch (error) {
+                    console.error('发送消息失败:', error);
+                    document.getElementById('bot-response').innerHTML =
+                        '请求失败，请稍后重试';
+                }
+            }
+
+
+            // 初始化
+            loadFileTree();
+
+            // 绑定回车事件
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- 左侧资源管理器 -->
+        <div class="sidebar">
+            <div class="explorer">
+                <header class="header">
+                    <h4>OpenManusX</h4>
+                </header>
+                <div class="file-tree"></div>
+            </div>
+        </div>
+
+        <!-- 中间工作区 -->
+        <div class="workspace">
+            <header class="header">
+                <h4>OpenManusX文件预览区及保存区！</h4>
+            </header>
+            <div class="editor-header">
+                <div class="tab active"> 示例文件</div>
+            </div>
+            <textarea class="code-editor" placeholder="在此输入代码..."></textarea>
+<!--            <div class="toolbar" style="margin-top: 10px;left: 1580px;position: absolute;">-->
+<!--                <button onclick="saveFile()" class="send-btn">保存文件</button>-->
+<!--            </div>-->
+        </div>
+
+        <!-- 右侧对话区 -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <header class="header">
+                    <h4>deepseek R1满血版 🟢 已连接</h4>
+                </header>
+                <div class="editor-header">
+                    <div class="tab active"> 🟢 已连接</div>
+                </div>
+            </div>
+
+                <!-- 前端修改 -->
+                <div class="chat-messages">
+                    <div class="message ai">
+                        <img src="/static/robot-avatar.png" class="avatar">
+                        <div class="content">您好！我是AI助手，需要什么帮助？</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="输入消息...">
+                    <button class="send-btn" onclick="sendMessage()">发送</button>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

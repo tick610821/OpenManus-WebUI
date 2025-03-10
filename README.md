@@ -11,16 +11,17 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 
 ##  本项目实质上是通过flask框架构建一个前端页面，进行OpenManus的调用，并对OpenManus生成的文件进行预览。
 # News
+- 2025-03-11 OpenManusX文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，可以下载到本地自行预览。也可自行采用OnlyOffice Document Server或者Google Docs Viewer进行ppt、word、excel的预览。
 - 2025-03-08 开源初版WebUI
 
 ## 📑 前端页面需要不断的优化，计划
 - OpenManusX
     - [x] 开源初版WebUI
-    - [ ] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的预览;    
+    - [x] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的预览;    
     - [ ] 大模型对话框需要对输出进行美化，需要对OpenManus运行log优化显示，如代码高亮等;    
     - [ ] 不断打磨前后端，完成自动化执行。
 
-
+## V1
 <div align="center">
     <img src="./assets/1.jpg">
 </div>
@@ -30,6 +31,22 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 <div align="center">
     <img src="./assets/3.jpg">
 </div>
+
+## V2
+<div align="center">
+    <img src="./assets/pdf.jpg">
+</div>
+<div align="center">
+    <img src="./assets/html.jpg">
+</div>
+<div align="center">
+    <img src="./assets/code.jpg">
+</div>
+
+
+## OpenManusX 使用方式：
+   可以将WebUI_v1或者WebUI_v1中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。
+
 
 用 OpenManusX 开启你的智能体之旅吧！  
 
