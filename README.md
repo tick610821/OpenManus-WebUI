@@ -46,11 +46,12 @@
    1.WebUI_v1和WebUI_v2目录是采用flask框架部署的前端页面，通过python app.py就可以启动。    
    2.OpenManus安装部署：    
        按照https://github.com/mannaandpoem/OpenManus.git进行安装OpenManus。然后将WebUI_v2中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。如下引用：  
-    ```python
-        async def main(prompt):
+    ```  
+    ```bash
+    async def main(prompt):
         agent = Manus()
         await agent.run(prompt)
-    ```  
+    ```
 
 ##  OpenManus-WebUI 使用方式二：（克隆该工程）：
 
