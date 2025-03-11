@@ -48,9 +48,9 @@
       
        按照https://github.com/mannaandpoem/OpenManus.git 进行安装OpenManus。然后将WebUI_v2中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。如下引用：  
  
-   3.适配代码,核心代码如下，参考项目中的app.py对OpenManus中的main.py进行修改。
+   3.适配代码,核心代码如下，参考项目中的app.py对OpenManus中的main.py进行修改。  
+   
     ```python
-
     async def main(prompt):
         agent = Manus()
         await agent.run(prompt)
