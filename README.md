@@ -50,7 +50,7 @@
  
    3.适配代码,核心代码如下，参考项目中的app.py对OpenManus中的main.py进行修改。  
    
-    ```python
+    ```
     async def main(prompt):
         agent = Manus()
         await agent.run(prompt)
