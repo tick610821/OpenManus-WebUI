@@ -134,7 +134,7 @@ python app.py
 <div align="center">
 <p>打赏一块钱支持一下作者</p>
 <div align="center">
-    <img src="./assets/dashang.jpg" width="100" height="100">
+    <img src="./assets/dashang.jpg" width="400" height="400">
 </div>
 </div>
 
