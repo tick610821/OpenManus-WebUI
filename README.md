@@ -138,6 +138,25 @@ python app.py
 </div>
 </div>
 
+# 💰 衷心感谢 **kelly** 的慷慨打赏！ 💰
+
+<p align="center">
+  <span style="font-size: 2.5em; color: #28a745; font-weight: bold;">
+    ¥ 100 元
+  </span>
+</p>
+
+---
+
+## ✨ 您的投资将用于：
+
+| 项目       | 占比 | 说明                  |
+|------------|------|-----------------------|
+| **代码优化** | 40%  | 提升项目性能和稳定性  |
+| **文档完善** | 30%  | 制作更友好的使用指南  |
+| **功能扩展** | 30%  | 开发用户建议的新特性  |
+
+
 ## 致谢
 
 特别感谢 [OpenManus](https://github.com/mannaandpoem/OpenManus)
