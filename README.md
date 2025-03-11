@@ -5,18 +5,18 @@
 
 [English](README_en.md) | 简体中文
 
-# OpenManusX 🙋
+# OpenManus-WebUI 🙋
 
 Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前端，于是本人花了2小时开发基于Flask框架一个简单的WebUI。 🛫！  
 项目实质上是通过flask框架构建一个前端页面，进行OpenManus的调用，并对OpenManus生成的文件进行预览。
 # News
-- 2025-03-11 OpenManusX文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，可以下载到本地自行预览。也可自行采用OnlyOffice Document Server或者Google Docs Viewer进行ppt、word、excel的预览。
+- 2025-03-11 OpenManus-WebUI文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，可以下载到本地。可以自行采用OnlyOffice Document Server或者Google Docs Viewer进行的预览。
 - 2025-03-08 开源初版WebUI
 
 ## 📑 前端页面需要不断的优化，计划
-- OpenManusX
+- OpenManus-WebUI
     - [x] 开源初版WebUI
-    - [x] OpenManusX文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的预览;    
+    - [x] OpenManus-WebUI文件预览区及保存区需要支持pdf、ppt、word、excel、代码高亮的预览;    
     - [ ] 大模型对话框需要对输出进行美化，需要对OpenManus运行log优化显示，如代码高亮等;    
     - [ ] 不断打磨前后端，完成自动化执行。
 
@@ -43,53 +43,36 @@ Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前�
 </div>
 
 
-## OpenManusX 使用方式：
-   可以将WebUI_v1或者WebUI_v1中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。
+## OpenManus-WebUI 使用方式一：（直接在已有的OpenManus环境上操作）：
+   1.WebUI_v1和WebUI_v2目录是采用flask框架部署的前端页面，通过python app.py就可以启动。  
+   2.OpenManus安装部署：  
+       按照https://github.com/mannaandpoem/OpenManus.git进行安装OpenManus。然后将WebUI_v2中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。如下引用：
+    ```python
+        async def main(prompt):
+        agent = Manus()
+        await agent.run(prompt)
+    ```
 
-
-用 OpenManusX 开启你的智能体之旅吧！  
-
-
-## 安装指南
+##  OpenManus-WebUI 使用方式二：（克隆该工程）：
 
 1. 创建新的 conda 环境：
 
 ```bash
-conda create -n OpenManusX python=3.12
-conda activate OpenManusX
+conda create -n OpenManus python=3.12
+conda activate OpenManus
 ```
 
-2. 克隆仓库：先进行安装OpenManus，后续安装OpenManusX的webUI就快的很
-
+2. 克隆仓库：
 ```bash
-https://github.com/mannaandpoem/OpenManus.git
-cd OpenManus
+git clone https://github.com/Shybert-AI/OpenManus-WebUI.git
+cd OpenManus-WebUI
 ```
-
-3. 安装依赖：
-
-```bash
+4. 安装依赖：
 pip install -r requirements.txt
-```
-4.安装OpenManusAI,2种方式
-
-```bash
-# 1 仓库安装
-https://github.com/Shybert-AI/OpenManusAI.git
-cd OpenManus
-pip install -r requirements.txt
-
-# 2 将OpenManus的运行代码拷贝到app.py文件
-
-async def main(prompt):
-    agent = Manus()
-    await agent.run(prompt)
-
-```
 
 ## 配置说明
 
-OpenManusX配置API和OpenManus一样，需要配置使用的 LLM API，请按以下步骤设置，本文配置deepseek R1模型：
+OpenManus-WebUI配置API和OpenManus一样，需要配置使用的 LLM API，请按以下步骤设置，本文配置deepseek R1模型：
 
 1. 在 `config` 目录创建 `config.toml` 文件（可从示例复制）：
 
@@ -132,12 +115,25 @@ api_key = "sk-xxxxxxxxxxxxxxxxxx"
 
 ## 快速启动
 
-一行命令运行 OpenManusX：
+一行命令运行OpenManus-WebUI：
 
 ```bash
 python app.py
 ```
-## 欢迎大佬将有趣的想法，提Issues，会不断进行优化和实现。
+## 欢迎大佬提出宝贵的建议和意见，提Issues，会不断进行优化和实现。
+## 联系与交流
+
+### 联系作者
+- **邮箱**：854197093@qq.com
+
+### 打赏作者
+<br/>
+<div align="center">
+<p>打赏一块钱支持一下作者</p>
+<div align="center">
+    <img src="./assets/html.jpg">
+</div>
+</div>
 
 ## 致谢
 
