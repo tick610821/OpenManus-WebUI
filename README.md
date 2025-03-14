@@ -23,7 +23,7 @@
 
 ## WebUI_V2
 <div align="center">
-    <img src="./assets/v3.jpg">
+    <img src="./assets/v3.png">
 </div>
 <div align="center">
     <img src="./assets/pdf.jpg">
