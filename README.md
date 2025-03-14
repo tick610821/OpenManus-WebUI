@@ -9,7 +9,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;Manus和OpenManus 非常棒，非常优秀的工作，目前OpenManus暂无前端，于是本人花了2小时开发基于Flask框架一个简单的WebUI。 项目实质上是通过flask框架构建一个前端页面，进行OpenManus的调用，并对OpenManus生成的文件进行预览。
 # News
-- 2025-03-14 衷心感谢 **Victor** 的慷慨打赏！修改WebUI流式显示的后端函数，从日志中读取修改为从队列中读取，减少误触。修改方式参考app/logger.py。[参考链接](https://blog.csdn.net/weixin_43509698/article/details/146269360)
+- 2025-03-14 衷心感谢 **Victor** 的慷慨打赏！修改WebUI流式显示的后端函数，将运行日志的读取方式由日志读取修改为读取队列，减少误触。修改方式参考app/logger.py。[参考链接](https://blog.csdn.net/weixin_43509698/article/details/146269360)
 - 2025-03-11 OpenManus-WebUI文件预览区支持HTML、PDF、HTML、CODE的预览。ppt、word、excel目前暂不支持预览，可以下载到本地。可以自行采用OnlyOffice Document Server或者Google Docs Viewer进行的预览。
 - 2025-03-08 开源初版WebUI
 
