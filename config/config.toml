@@ -2,7 +2,7 @@
 #[llm]
 #model = "deepseek-chat"
 #base_url = "https://api.deepseek.com/v1"
-#api_key = "sk-f3ea7084bef6431eaef505336d1caf0b"
+#api_key = "sk-xxxxxxxxxxxxxxxxxxxxxx"
 #max_tokens = 1024
 #temperature = 0.6
 #
@@ -10,14 +10,14 @@
 #[llm.vision]
 #model = "deepseek-chat"
 #base_url = "https://api.deepseek.com/v1"
-#api_key = "sk-f3ea7084bef6431eaef505336d1caf0b"
+#api_key = "sk-xxxxxxxxxxxxxxxxxxxxxx"
 
 #
 # Global LLM configuration
 [llm]
 model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 base_url = "https://api.siliconflow.cn/v1/"
-api_key = "sk-wnfrxjealelxsdnvywkcphqjdaxrqswfkdpwpkohvkgjenzl"
+api_key = "sk-xxxxxxxxxxxxxxxxxxxxxxx"
 max_tokens = 4096
 temperature = 0.6
 
@@ -25,4 +25,4 @@ temperature = 0.6
 [llm.vision]
 model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 base_url = "https://api.siliconflow.cn/v1/"
-api_key = "sk-wnfrxjealelxsdnvywkcphqjdaxrqswfkdpwpkohvkgjenzl"
+api_key = "sk-xxxxxxxxxxxxxxxxxxxxxx"
