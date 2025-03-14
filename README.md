@@ -23,6 +23,9 @@
 
 ## WebUI_V2
 <div align="center">
+    <img src="./assets/v3.jpg">
+</div>
+<div align="center">
     <img src="./assets/pdf.jpg">
 </div>
 <div align="center">
