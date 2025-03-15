@@ -29,7 +29,7 @@
 
 ## WebUI_V2
 <div align="center">
-    <img src="./assets/v3.png">
+    <img src="./assets/daohang.jpg">
 </div>
 <div align="center">
     <img src="./assets/pdf.jpg">
