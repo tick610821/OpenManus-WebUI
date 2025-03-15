@@ -47,10 +47,10 @@
 </div>
 
 
-## OpenManus-WebUI 使用方式一：（直接在已有的OpenManus环境上操作）：
-   1.WebUI_v1和WebUI_v2目录是采用flask框架部署的前端页面，通过python app.py就可以启动。    
+## OpenManus-WebUI 使用方式一：（集成到已有OpenManus环境上）：
+   1.WebUI_v1和WebUI_v2 目录是采用flask框架部署的前端页面，通过python app.py就可以启动。    
    2.OpenManus安装部署，按照https://github.com/mannaandpoem/OpenManus.git 进行安装OpenManus。  
-   3.将WebUI_v2中的static和templates拷贝到OpenManus的项目中，然后将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。   
+   3.将WebUI_v2中的static和templates拷贝到OpenManus的项目中，将main.py中函数的调用方式引入到app.py中，即可实现OpenManus的Web调用。   
    4.适配代码,核心代码如下，参考项目中的app.py对OpenManus中的main.py进行修改。    
 
 
