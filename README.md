@@ -22,7 +22,7 @@
     - [x] 优化大模型对话框,优化流式输出后端处理逻辑;    
     - [ ] 流式输出的代码进行高亮显示，Markdown的内容进行美化
     - [ ] 不断打磨前后端，完成自动化执行。
-### 注意：左侧导航栏显示的默认路径是在workspace目录下，可以手动放置文件，就可以显示。OpenManus生成的文件需要确保文件在OpenManus目录下可以进行预览。
+### 注意：左侧导航栏的默认路径是在workspace目录，可以手动放置文件，就可以预览。OpenManus生成的文件需要确保文件在OpenManus目录下才可以进行预览。
 <div align="center">
     <img src="./assets/daohang.jpg">
 </div>
