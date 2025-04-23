@@ -170,6 +170,9 @@ python app.py
 
 特别感谢 [OpenManus](https://github.com/mannaandpoem/OpenManus)
 和 [browser-use](https://github.com/browser-use/browser-use) 为本项目提供的基础支持！
+## 致谢
+本项目由VTEXS的「项目开源免费VPS计划」提供算力支持。
+感谢VTEXS对开源社区的支持！
 
 ## ⭐ Star History
 
